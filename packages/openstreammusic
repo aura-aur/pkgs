@@ -13,7 +13,7 @@ archDeps="nodejs npm curl nss"
 
 if [[ $1 == "install" ]]; then
     wget https://github.com/openstreamorg/openstreammusic/archive/refs/tags/v${pkgVersion}.zip  >> /temp/auralog
-    unzip v${pkgVersion}.zip >> /temp/auralog
+    unzip v${pkgVersion}.zip > /temp/auralog
     cd ${pkgName}-${pkgVersion}/desktop || exit 1
     npm install >> /temp/auralog
     npm install electron-builder >> /temp/auralog
