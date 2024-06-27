@@ -11,17 +11,19 @@ debianDeps="npm nodejs curl libnss3"
 fedoraDeps="npm nodejs curl nss"
 archDeps="nodejs npm curl nss"
 
-if [[ $1 == "install" ]]; then
-    wget https://github.com/openstreamorg/openstreammusic/archive/refs/tags/v${pkgVersion}.zip > /tmp/auralog
-    unzip v${pkgVersion}.zip >> /tmp/auralog
-    cd ${pkgName}-${pkgVersion}/desktop || exit 1
-    npm install >> /tmp/auralog
-    npm install electron-builder >> /tmp/auralog
-    npx electron-builder -l $electronBuilderPkg --x64 >> /tmp/auralog
-    cd build || exit 1
-    sudo $nativePkgInstall ./${pkgName}*.${nativePkgFile} >> /tmp/auralog
-    cd ../../.. || exit 1
-    rm -r ${pkgName}-${pkgVersion} >> /tmp/auralog
-elif [[ $1 == "remove" ]]; then
-    sudo $nativePkgRemove ${pkgName} >> /tmp/auralog
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    if [[ $1 == "install" ]]; then
+        wget https://github.com/openstreamorg/openstreammusic/archive/refs/tags/v${pkgVersion}.zip > /tmp/auralog
+        unzip v${pkgVersion}.zip >> /tmp/auralog
+        cd ${pkgName}-${pkgVersion}/desktop || exit 1
+        npm install >> /tmp/auralog
+        npm install electron-builder >> /tmp/auralog
+        npx electron-builder -l $electronBuilderPkg --x64 >> /tmp/auralog
+        cd build || exit 1
+        sudo $nativePkgInstall ./${pkgName}*.${nativePkgFile} >> /tmp/auralog
+        cd ../../.. || exit 1
+        rm -r ${pkgName}-${pkgVersion} >> /tmp/auralog
+    elif [[ $1 == "remove" ]]; then
+        sudo $nativePkgRemove ${pkgName} >> /tmp/auralog
+    fi
 fi
