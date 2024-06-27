@@ -13,4 +13,6 @@ archDeps="firefox"
 
 if [[ $1 == "install" ]]; then
     echo "Installed"
+elif [[ $1 == "remove" ]]; then
+    sudo $nativePkgRemove firefox > /dev/null
 fi

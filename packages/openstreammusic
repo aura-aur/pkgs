@@ -20,4 +20,8 @@ if [[ $1 == "install" ]]; then
     npx electron-builder -l $electronBuilderPkg --x64 > /dev/null
     cd build
     sudo $nativePkgInstall ./${pkgName}*.${nativePkgFile} > /dev/null
+    cd ../../..
+    rm -r ${pkgName}-${pkgVersion} > /dev/null
+elif [[ $1 == "remove"]]; then
+    sudo $nativePkgRemove ${pkgName} > /dev/null
 fi
