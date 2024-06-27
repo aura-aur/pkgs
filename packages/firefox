@@ -1,0 +1,16 @@
+#!/bin/bash
+
+pkgName="firefox"
+styledName="Firefox"
+pkgVersion="127.0"
+arch="x86_64"
+electronArch="amd64"
+website="https://mozilla.org"
+
+debianDeps="firefox"
+fedoraDeps="firefox"
+archDeps="firefox"
+
+if [[ $1 == "install" ]]; then
+    echo "Installed"
+fi
