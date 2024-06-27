@@ -9,7 +9,7 @@ website="https://openstreamorg.github.io"
 
 debianDeps="npm nodejs curl libnss3"
 fedoraDeps="npm nodejs curl nss"
-archDeps="nodejs npm curl nss"
+archDeps="nodejs npm curl nss libappindicator-sharp"
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     if [[ $1 == "install" ]]; then

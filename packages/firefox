@@ -4,7 +4,6 @@ pkgName="firefox"
 styledName="Firefox"
 pkgVersion="latest"
 arch=("x86_64" "x86")
-electronArch="amd64"
 website="https://mozilla.org"
 
 debianDeps="libc6 libgtk-3-0 libglib2.0-0 libstdc++6"
