@@ -1,0 +1,23 @@
+#!/bin/bash
+
+pkgName="openstreammusic"
+styledName="OpenStream Music"
+pkgVersion="1.3.3"
+arch="x86_64"
+electronArch="amd64"
+website="https://openstreamorg.github.io"
+
+debianDeps="npm nodejs curl libnss3"
+fedoraDeps="npm nodejs curl nss"
+archDeps="nodejs npm curl nss"
+
+if [[ $1 == "install" ]]; then
+    wget https://github.com/openstreamorg/openstreammusic/archive/refs/tags/v${pkgVersion}.zip > /dev/null
+    unzip v${pkgVersion}.zip > /dev/null
+    cd ${pkgName}-${pkgVersion}/desktop
+    npm install > /dev/null 
+    npm install electron-builder > /dev/null
+    npx electron-builder -l $electronBuilderPkg --x64 > /dev/null
+    cd build
+    sudo $nativePkgInstall ./${pkgName}*.${nativePkgFile} > /dev/null
+fi
